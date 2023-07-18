@@ -34,9 +34,6 @@ struct MyData {
 
 MyData data;
 
-//setting up buzzer;
-const int buzzer = 9; 
-
 //Making variable to track how many times buzzer went off:
 int count = 0;
 
@@ -52,9 +49,6 @@ void setup() {
 
   //LCD setup:
   lcd.begin(16, 2);
-
-  //setting buzzer as output:
-  pinMode(buzzer, OUTPUT); // Set buzzer - pin 9 as an output
 
   //Setting up button:
   pinMode(buttonPin, INPUT_PULLUP);
@@ -131,13 +125,11 @@ void loop() {
 
   //If the difference in average and raw values is larger than the max or smaller than min, play sound:
   if (xDiff < minVal || xDiff > maxVal || yDiff < minVal || yDiff > maxVal){
-    tone(buzzer, 1000);
     digitalWrite(LED,HIGH);
   }
   else{
-    //Stop sound
+    //turn off LED
     digitalWrite(LED,LOW);
-    noTone(buzzer);
   }
 
 }
